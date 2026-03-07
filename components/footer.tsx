@@ -104,6 +104,14 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Disclaimer */}
+        <div className="mt-10 border-t border-border/40 pt-6">
+          <p className="text-xs sm:text-sm text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
+            Disclaimer: Installation and billing for consumers are managed directly by our company.
+            We procure products and services from authorized distributors to ensure quality and reliability.
+          </p>
+        </div>
+
         {/* Bottom Bar */}
         <div className="mt-16 border-t border-border/50 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">

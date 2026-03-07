@@ -11,6 +11,8 @@ import { Footer } from '@/components/footer'
 import getYearsOfEXP from '@/hooks/getYearsOfEXP'
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay"
+import HeroCards from "./HeroCarousel"
+import HeroSlider from "./HeroCarousel"
 
 // Trust Indicators Component with Dynamic Years
 function TrustIndicators() {
@@ -84,8 +86,8 @@ export default function HomePage() {
     {
       title: "Get Government Subsidy upto ₹78,000",
       description:
-        "Install on-grid solar systems and receive Tamil Nadu government subsidies. SunStark helps you handle the entire subsidy process from application to approval.",
-      image: "/images/home-hero.jpg",
+        "Install on-grid solar systems and receive Central Government subsidy through national bank processing. Subsidy is applicable for systems installed with approved DCR (Domestic Content Requirement) solar panels. SunStark handles the entire process from application to subsidy approval.",
+      image: "/images/subsidy_image.png",
       button1: "Check Eligibility",
       button2: "Contact Us",
     },
@@ -94,7 +96,7 @@ export default function HomePage() {
       title: "Go Solar with EMI Starting ₹2170 / Month",
       description:
         "Switch to solar today with easy EMI options and zero upfront burden. Affordable solar power for every home and business.",
-      image: "/images/home-hero.jpg",
+      image: "/images/EMI_image.png",
       button1: "Calculate Solar Needs",
       button2: "View Services",
     },
@@ -105,79 +107,7 @@ export default function HomePage() {
       <Header />
       <main>
         {/* Hero Section with Image */}
-        <section className="relative transition-opacity duration-700 ease-in-out border-b border-border bg-background overflow-hidden">
-          <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="flex">
-              {slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className="relative flex-[0_0_100%] min-h-[600px]"
-                >
-                  {/* Background Image */}
-                  <div className="absolute inset-0">
-                    <Image
-                      src={slide.image}
-                      alt={slide.title}
-                      fill
-                      priority
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/40" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-32 lg:py-40">
-                    <div className="space-y-8 sm:space-y-12 max-w-2xl">
-                      <div className="space-y-4 sm:space-y-6">
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                          {slide.title}
-                        </h1>
-
-                        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                          {slide.description}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
-                        <Button
-                          asChild
-                          size="lg"
-                          className="w-full sm:w-auto gap-2 bg-accent hover:bg-accent/90 text-accent-foreground"
-                        >
-                          <Link href="/contact">
-                            {slide.button1}
-                            <ArrowRight className="h-4 w-4" />
-                          </Link>
-                        </Button>
-
-                        <Button
-                          asChild
-                          variant="outline"
-                          size="lg"
-                          className="w-full sm:w-auto"
-                        >
-                          <Link href="/services">{slide.button2}</Link>
-                        </Button>
-                      </div>
-
-                      {index === 0 && <TrustIndicators />}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Dots */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-            {slides.map((_, index) => (
-              <div
-                key={index}
-                className="h-2 w-2 rounded-full bg-white/50"
-              />
-            ))}
-          </div>
-        </section>
+        <HeroSlider/>
 
         {/* Featured Projects Section */}
         <section className="border-b border-border bg-secondary/30 py-16 sm:py-24 lg:py-32">
