@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from "react"
+import React from "react"
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,33 +8,9 @@ import { ArrowRight, Zap, Shield, TrendingUp, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
-import getYearsOfEXP from '@/hooks/getYearsOfEXP'
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay"
-import HeroCards from "./HeroCarousel"
 import HeroSlider from "./HeroCarousel"
-
-// Trust Indicators Component with Dynamic Years
-function TrustIndicators() {
-  const { yearsOfExcellence } = getYearsOfEXP()
-
-  return (
-    <div className="pt-8 sm:pt-12 grid grid-cols-3 gap-4 sm:gap-6 border-t border-border/30">
-      <div className="flex flex-col gap-1">
-        <div className="text-2xl sm:text-3xl font-bold text-accent">600+</div>
-        <div className="text-xs sm:text-sm text-muted-foreground">Projects Completed</div>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-2xl sm:text-3xl font-bold text-accent">{yearsOfExcellence}+</div>
-        <div className="text-xs sm:text-sm text-muted-foreground">Years of Excellence</div>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-2xl sm:text-3xl font-bold text-accent">99%</div>
-        <div className="text-xs sm:text-sm text-muted-foreground">Client Satisfaction</div>
-      </div>
-    </div>
-  )
-}
+import SolarFinanceSection from "./FinanceSection"
+import { HomeMessageForm } from "./MessageForm"
 
 // Icon components
 function HomeIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -62,52 +38,15 @@ function Wrench(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export default function HomePage() {
-  const autoplay = Autoplay({
-    delay: 2000,
-    stopOnInteraction: false,
-    stopOnMouseEnter: true,
-  })
-
-  const [emblaRef] = useEmblaCarousel(
-    { loop: true, dragFree: true },
-    [autoplay]
-  )
-
-  const slides = [
-    {
-      title: "Premium Solar Energy for Your Future",
-      description:
-        "Transform your energy independence with cutting-edge solar solutions. From residential homes to industrial facilities, we deliver sustainable power across South India.",
-      image: "/images/home-hero.jpg",
-      button1: "Get Free Consultation",
-      button2: "Explore Solutions",
-    },
-
-    {
-      title: "Get Government Subsidy upto ₹78,000",
-      description:
-        "Install on-grid solar systems and receive Central Government subsidy through national bank processing. Subsidy is applicable for systems installed with approved DCR (Domestic Content Requirement) solar panels. SunStark handles the entire process from application to subsidy approval.",
-      image: "/images/subsidy_image.png",
-      button1: "Check Eligibility",
-      button2: "Contact Us",
-    },
-
-    {
-      title: "Go Solar with EMI Starting ₹2170 / Month",
-      description:
-        "Switch to solar today with easy EMI options and zero upfront burden. Affordable solar power for every home and business.",
-      image: "/images/EMI_image.png",
-      button1: "Calculate Solar Needs",
-      button2: "View Services",
-    },
-  ]
 
   return (
     <>
       <Header />
       <main>
         {/* Hero Section with Image */}
-        <HeroSlider/>
+        <HeroSlider />
+
+          <HomeMessageForm />
 
         {/* Featured Projects Section */}
         <section className="border-b border-border bg-secondary/30 py-16 sm:py-24 lg:py-32">
@@ -311,6 +250,8 @@ export default function HomePage() {
           </div>
         </section>
 
+        <SolarFinanceSection />
+
         {/* CTA Section */}
         <section className="border-b border-border bg-background py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -335,6 +276,7 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+    
       <Footer />
     </>
   )
